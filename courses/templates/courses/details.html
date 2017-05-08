@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{%  load static %}
+
+{% block container %}
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 borda1">
+            <div class="page-header">
+                <h1>{{ course.name }} <small><span class="label label-warning">{{ course.start_date }}</span></small></h1>
+            </div>
+                {% if course.image %}
+                    <img src="{{ course.image.url }}" alt="{{ course.name }}" class="img-responsive col-md-3">
+                {% else %}
+                    <img src="{% static "img/default.jpg" %}" alt="{{ course.name }}" class="img-responsive col-md-3">
+                {% endif %}
+                <h3>Descrição</h3>
+                <p>{{ course.description }}</p>
+                <h4>Sobre o Curso</h4>
+                <p>{{ course.about|linebreaks }}</p>
+
+
+        <div class="page-header">
+            <h1></h1>
+        </div>
+
+        <div class="col-md-6">
+
+        {% if is_valid %}
+            <div class="alert alert-success" role="alert">
+                <a href="#" class="alert-link">Formulário Enviado com Sucesso!</a>
+            </div>
+        {% endif %}
+            <form method="post">
+            {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="asf">{{ field.label_tag }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger" role="alert">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}

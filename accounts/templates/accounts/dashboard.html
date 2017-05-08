@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+<!-- add_class no html -->
+{% load widget_tweaks %}
+
+
+{% block container %}
+<div class="row">
+    <div class="col-md-10 borda1 col-md-offset-1"> 
+
+
+        <div class="col-md-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Menu
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="{% url 'accounts:dashboard' %}">Painel</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{% url 'accounts:edit' %}">Editar Conta</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{% url 'accounts:edit_password' %}">Editar Senha</a>
+                    </li>
+                </ul>
+            </div><!-- painel -->
+        </div><!-- largura do painel -->
+
+        
+        <div class="col-md-9">
+
+            <ol class="breadcrumb">
+                <li><a href="{% url 'accounts:dashboard' %}">Painel</a></li>
+                <!--<li class="active">Usuário</li>-->
+                {% block breadcrumb %}
+                {% endblock %}
+            </ol>
+
+            <div class="page-header">
+                <h1>Olá {{ user }} <small> {{user.email}}</small></h1>
+            </div>
+
+            {% block dashboard_content %}
+            {% endblock %}
+
+        </div>
+
+
+    </div>
+</div><!-- row -->
+{% endblock %}

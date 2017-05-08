@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+{% load static %}
+<head>
+	<meta charset="UTF-8">
+	<title>Template Django</title>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    	<script src="{%  static 'js/jquery.js' %}"></script>
+
+	<script src="{%  static 'js/bootstrap.js' %}"></script>
+	<script src="{%  static 'js/script.js' %}"></script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'core:home' %}">Home</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+          <li><a href="{% url 'core:contact' %}">Contato</a></li>
+          <li><a href="{% url 'courses:index' %}">Cursos</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'accounts:dashboard' %}">Painel</a></li>
+            <li><a href="{% url 'accounts:logout' %}">Sair</a></li>
+          {% else %}
+            <li><a href="{% url 'accounts:login' %}">Login</a></li>
+          {% endif %}
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container-fluid">
+
+    {% block container %}
+
+    {% endblock %}
+
+</div><!-- fim do html container-fluid -->
+</body>
+</html>

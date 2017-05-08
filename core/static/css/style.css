@@ -1,0 +1,19 @@
+*{
+    list-style-type: none;
+    text-decoration: none;
+    margin:0px;
+    padding: 0px;
+}
+.licursos{
+    border:1px solid red;
+    margin-bottom: 10px;
+}
+.licursos h5{
+    padding: 0 0 0 15px;
+    color: green;
+}
+
+
+.borda1{
+    border:1px solid red;
+}
