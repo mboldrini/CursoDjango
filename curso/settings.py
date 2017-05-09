@@ -158,3 +158,6 @@ EMAIL_PORT = 587
 LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = 'accounts:dashboard'
 LOGOUT_URL = 'accounts:logout'
+
+#
+#AUTH_USER_MODEL = 'accounts.User'
